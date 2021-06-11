@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Robot.gd" type="Script" id=1]
+[ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Parts/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Part.gd" type="Script" id=4]
+[ext_resource path="res://Parts/Thruster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Parts/Roller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Parts/Draggable.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 16 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D2" type="RigidBody2D" parent="."]
+position = Vector2( 8, 576 )
+rotation = 1.57079
+collision_layer = 3
+mode = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( -512, -16, 512, -16, 512, 16, -512, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 512, 576 )
+collision_layer = 3
+mode = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -512, -16, 512, -16, 512, 16, -512, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Robot" type="RigidBody2D" parent="."]
+position = Vector2( 512, 192 )
+mode = 2
+script = ExtResource( 1 )
+draggableHolderPath = NodePath("../Draggables")
+
+[node name="Controller" type="CollisionShape2D" parent="Robot"]
+shape = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Robot/Controller"]
+polygon = PoolVector2Array( -16, 16, -16, 0, -8, -8, 8, -8, 16, 0, 16, 16 )
+
+[node name="Attachments" type="Node2D" parent="Robot/Controller"]
+
+[node name="Attachment" parent="Robot/Controller/Attachments" instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
+side = 3
+
+[node name="Block" parent="Robot" instance=ExtResource( 3 )]
+position = Vector2( 0, 32 )
+
+[node name="Draggables" type="Node2D" parent="."]
+
+[node name="Draggable" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 704, 256 )
+
+[node name="Block" parent="Draggables/Draggable" instance=ExtResource( 3 )]
+onRobot = false
+
+[node name="Draggable2" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 768, 256 )
+
+[node name="Roller" parent="Draggables/Draggable2" instance=ExtResource( 6 )]
+onRobot = false
+
+[node name="Draggable3" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 832, 256 )
+
+[node name="Thruster" parent="Draggables/Draggable3" instance=ExtResource( 5 )]
+onRobot = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[editable path="Draggables/Draggable"]
+
+[editable path="Draggables/Draggable2"]
