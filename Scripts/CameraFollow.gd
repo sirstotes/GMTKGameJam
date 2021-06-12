@@ -1,10 +1,10 @@
 extends Camera2D
 
 export var followPath : NodePath
-export var boundaryLeft : float = 0
+export var boundaryLeft : float = 256
 export var boundaryRight : float = 256
-export var boundaryTop : float = 0
-export var boundaryBottom : float = 144
+export var boundaryTop : float = 64
+export var boundaryBottom : float = 64
 
 var follow : Node
 

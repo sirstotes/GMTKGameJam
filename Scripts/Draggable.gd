@@ -5,6 +5,7 @@ signal drop()
 
 var dragging : bool = false
 var mouseOffset : Vector2 = Vector2(0, 0)
+var paused : bool = true
 
 func _ready() -> void:
 	connect("drag", self, "_on_drag")
@@ -12,14 +13,17 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if get_child_count() <= 0:
 		queue_free()
-	if dragging:
-		position = get_viewport().get_mouse_position() + mouseOffset
-		if Input.is_action_just_pressed("rotate_left"):
-			get_child(0)._set_direction(get_child(0).direction+1)
-			emit_signal("drop")
-		if Input.is_action_just_pressed("rotate_right"):
-			get_child(0)._set_direction(get_child(0).direction-1)
-			emit_signal("drop")
+	if paused:
+		if dragging:
+			position = get_viewport().get_mouse_position() + mouseOffset
+			if Input.is_action_just_pressed("rotate_left"):
+				get_child(0)._set_direction(get_child(0).direction+1)
+				emit_signal("drop")
+			if Input.is_action_just_pressed("rotate_right"):
+				get_child(0)._set_direction(get_child(0).direction-1)
+				emit_signal("drop")
+	else:
+		dragging = false
 func _on_drag() -> void:
 	dragging = true
 	for attachment in get_child(0).get_node("Attachments").get_children():
@@ -36,7 +40,6 @@ func _on_drop() -> void:
 func _on_input_event(viewport, event, shape_idx) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			print("MOUSE")
 			emit_signal("drag")
 			mouseOffset = position - get_viewport().get_mouse_position()
 		elif event.button_index == BUTTON_LEFT and !event.pressed:

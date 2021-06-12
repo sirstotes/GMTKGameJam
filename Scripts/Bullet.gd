@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Bullet
 
 export var direction : Vector2 = Vector2(1, 0)
 export var speed : float = 64
@@ -16,4 +17,4 @@ func _process(delta):
 	if timeAlive > lifeTime:
 		queue_free()
 	rotation = direction.angle()
-	move_and_collide((velocity + direction*speed)*delta)
+	var col = move_and_collide((velocity + direction*speed)*delta)

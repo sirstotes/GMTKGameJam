@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://RobotGame.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/RobotGame.png" type="Texture" id=1]
 [ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Part.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Robot.gd" type="Script" id=5]
 
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.5
+
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 12 )
+extents = Vector2( 14, 11 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -14,21 +18,24 @@ region = Rect2( 0, 0, 16, 16 )
 
 [node name="Robot" type="RigidBody2D"]
 mode = 2
+physics_material_override = SubResource( 3 )
+can_sleep = false
 script = ExtResource( 5 )
 draggableHolderPath = NodePath("../Draggables")
 
 [node name="Controller" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -64 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Controller"]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -5 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 2 )
 
 [node name="Attachments" type="Node2D" parent="Controller"]
-visible = false
 
 [node name="Attachment" parent="Controller/Attachments" instance=ExtResource( 2 )]
-position = Vector2( 0, 12 )
+visible = false
+position = Vector2( 0, 11 )
 side = 3

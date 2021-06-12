@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Scripts/Part.gd" type="Script" id=1]
 [ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://RobotGame.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/RobotGame.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )

@@ -1,20 +1,47 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	$Robot.connect("begin_editing", $Draggables, "show")
-	$Robot.connect("finish_editing", $Draggables, "hide")
+	_begin_editing($Builder)
+func _begin_editing(builder : Node2D):
+	#$Draggables.show()
+	$CanvasLayer/Editor/Button.show()
+	for draggable in get_tree().get_nodes_in_group("Draggable"):
+		draggable.paused = true
 	for part in get_tree().get_nodes_in_group("Part"):
-		$Robot.connect("begin_editing", part, "_set_paused", [true])
-		$Robot.connect("finish_editing", part, "_set_paused", [false])
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		part.paused = true
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.paused = true
+	for builder in get_tree().get_nodes_in_group("Builder"):
+		builder.paused = true
+	$Robot._begin_editing(builder.get_node("RobotSpace").global_position)
+func _finish_editing():
+	#$Draggables.hide()
+	$CanvasLayer/Editor/Button.hide()
+	for draggable in get_tree().get_nodes_in_group("Draggable"):
+		draggable.paused = false
+	for part in get_tree().get_nodes_in_group("Part"):
+		part.paused = false
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.paused = false
+	for builder in get_tree().get_nodes_in_group("Builder"):
+		builder.paused = false
+	$Robot._finish_editing()
+func _input(event):
+	if event.is_action_pressed("pause"):
+		get_tree().paused = true
+		$CanvasLayer/Pause.show()
+func _unpause():
+	get_tree().paused = false
+	$CanvasLayer/Pause.hide()
+func _reset():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+func _next_level():
+	pass
+func _menu():
+	pass
+func _on_goal_entered(body):
+	if body.is_in_group("Robot"):
+		_next_level()
+func _update_player_ui():
+	$CanvasLayer/UI/ColorRect.rect_scale.x = float($Robot.health)/float($Robot.maxHealth)

@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Scripts/Draggable.gd" type="Script" id=2]
 
-[node name="Draggable" type="Area2D"]
+[node name="Draggable" type="Area2D" groups=[
+"Draggable",
+]]
 script = ExtResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,0 +1,606 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Sprites/RobotGame.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/large.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Spawn/Builder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Parts/Roller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Parts/Robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Parts/Draggable.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/CameraFollow.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/paralax-2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/paralax-1.png" type="Texture" id=12]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 8, 8, 0, 8, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 8, 16, 0, 16, 16, 0, 16, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 24, 0, 24, 16, 0, 16, 0, 8 )
+
+[sub_resource type="TileSet" id=9]
+0/name = "RobotGame.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 88, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "RobotGame.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 88, 8, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "RobotGame.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 96, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 3 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+5/name = "RobotGame.png 5"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 112, 0, 8, 8 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 4 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "RobotGame.png 6"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 120, 0, 8, 8 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 5 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "RobotGame.png 7"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 120, 8, 8, 8 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 6 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "RobotGame.png 8"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 112, 8, 8, 8 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 7 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "RobotGame.png 9"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 64, 0, 24, 16 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 8 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+
+[sub_resource type="PhysicsMaterial" id=10]
+friction = 0.0
+bounce = 0.2
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 20, 32, 4 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 24, 32, 8 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 32, 8 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 40, 32, 8 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 48, 32, 8 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 24, 128 )
+
+[sub_resource type="TileSet" id=19]
+0/name = "RobotGame.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 64, 16, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "RobotGame.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 72, 16, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "RobotGame.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 80, 16, 8, 8 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0.219608, 0.682353 )
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.75, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="Builder" parent="." groups=[
+"Builder",
+] instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"Ground",
+]]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 9 )
+cell_size = Vector2( 8, 8 )
+cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
+collision_layer = 1024
+format = 1
+tile_data = PoolIntArray( 917504, 5, 0, 917505, 5, 0, 917506, 5, 0, 917507, 5, 0, 917508, 5, 0, 917509, 5, 0, 917510, 5, 0, 917511, 5, 0, 917512, 5, 0, 917513, 5, 0, 917514, 5, 0, 917515, 5, 0, 917516, 5, 0, 917517, 5, 0, 917518, 5, 0, 917519, 5, 0, 917520, 5, 0, 917521, 5, 0, 917522, 5, 0, 917523, 5, 0, 917524, 5, 0, 917525, 5, 0, 917526, 5, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0, 917530, 5, 0, 917531, 5, 0, 917532, 5, 0, 917533, 5, 0, 917534, 5, 0, 917535, 5, 0, 983040, 8, 0, 983041, 8, 0, 983042, 8, 0, 983043, 8, 0, 983044, 8, 0, 983045, 8, 0, 983046, 8, 0, 983047, 8, 0, 983048, 8, 0, 983049, 8, 0, 983050, 8, 0, 983051, 8, 0, 983052, 8, 0, 983053, 8, 0, 983054, 8, 0, 983055, 8, 0, 983056, 8, 0, 983057, 8, 0, 983058, 8, 0, 983059, 8, 0, 983060, 8, 0, 983061, 8, 0, 983062, 8, 0, 983063, 8, 0, 983064, 8, 0, 983065, 8, 0, 983066, 8, 0, 983067, 8, 0, 983068, 8, 0, 983069, 8, 0, 983070, 8, 0, 983071, 8, 0, 1048576, 8, 0, 1048577, 8, 0, 1048578, 8, 0, 1048579, 8, 0, 1048580, 8, 0, 1048581, 8, 0, 1048582, 8, 0, 1048583, 8, 0, 1048584, 8, 0, 1048585, 8, 0, 1048586, 8, 0, 1048587, 8, 0, 1048588, 8, 0, 1048589, 8, 0, 1048590, 8, 0, 1048591, 8, 0, 1048592, 8, 0, 1048593, 8, 0, 1048594, 8, 0, 1048595, 8, 0, 1048596, 8, 0, 1048597, 8, 0, 1048598, 8, 0, 1048599, 8, 0, 1048600, 8, 0, 1048601, 8, 0, 1048602, 8, 0, 1048603, 8, 0, 1048604, 8, 0, 1048605, 8, 0, 1048606, 8, 0, 1048607, 8, 0, 1114112, 8, 0, 1114113, 8, 0, 1114114, 8, 0, 1114115, 8, 0, 1114116, 8, 0, 1114117, 8, 0, 1114118, 8, 0, 1114119, 8, 0, 1114120, 8, 0, 1114121, 8, 0, 1114122, 8, 0, 1114123, 8, 0, 1114124, 8, 0, 1114125, 8, 0, 1114126, 8, 0, 1114127, 8, 0, 1114128, 8, 0, 1114129, 8, 0, 1114130, 8, 0, 1114131, 8, 0, 1114132, 8, 0, 1114133, 8, 0, 1114134, 8, 0, 1114135, 8, 0, 1114136, 8, 0, 1114137, 8, 0, 1114138, 8, 0, 1114139, 8, 0, 1114140, 8, 0, 1114141, 8, 0, 1114142, 8, 0, 1114143, 8, 0 )
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Draggables" type="Node2D" parent="."]
+pause_mode = 2
+
+[node name="Draggable" parent="Draggables" instance=ExtResource( 8 )]
+position = Vector2( 256, 160 )
+
+[node name="Roller" parent="Draggables/Draggable" instance=ExtResource( 6 )]
+direction = 1
+onRobot = false
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Robot" parent="." groups=[
+"Robot",
+] instance=ExtResource( 7 )]
+pause_mode = 2
+position = Vector2( 256, 128 )
+mode = 0
+physics_material_override = SubResource( 10 )
+angular_damp = 1.0
+draggableHolderPath = NodePath("../../BaseLevel/Draggables")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 256, 64 )
+offset = Vector2( 0, 80 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 9 )
+followPath = NodePath("../../BaseLevel/Robot")
+
+[node name="Goal" type="StaticBody2D" parent="."]
+position = Vector2( 472, 220 )
+
+[node name="Sprite" type="Sprite" parent="Goal"]
+scale = Vector2( 2, 2 )
+texture = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Goal"]
+polygon = PoolVector2Array( -34, 4, 34, 4, 26, -4, -26, -4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Goal"]
+position = Vector2( 0, -12 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 17 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3"]
+position = Vector2( 0, -8 )
+frames = SubResource( 17 )
+frame = 3
+playing = true
+
+[node name="Area2D" type="Area2D" parent="Goal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Area2D"]
+position = Vector2( 0, -132 )
+shape = SubResource( 18 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Editor" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/Editor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -44.0
+margin_right = 64.0
+margin_bottom = -12.0
+custom_fonts/font = ExtResource( 3 )
+text = "Finish Editing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI"]
+margin_left = 18.0
+margin_top = 18.0
+margin_right = 174.0
+margin_bottom = 30.0
+color = Color( 0.65098, 0.215686, 0.145098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/UI/ColorRect"]
+margin_top = 10.0
+margin_right = 156.0
+margin_bottom = 12.0
+color = Color( 0.478431, 0.129412, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="CanvasLayer/UI"]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 19 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 65537, 0, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 2, 0 )
+
+[node name="Pause" type="Panel" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -54.0
+margin_top = 48.0
+margin_right = 55.0
+margin_bottom = 84.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "PAUSED"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -28.5
+margin_right = 65.0
+margin_bottom = -3.5
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "RESUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.5
+margin_top = 16.0
+margin_right = 65.5
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "RESTART LEVEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.0
+margin_top = 60.5
+margin_right = 66.0
+margin_bottom = 85.5
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "MAIN MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="Goal/Area2D" to="." method="_on_goal_entered"]
+[connection signal="pressed" from="CanvasLayer/Editor/Button" to="." method="_finish_editing"]
+[connection signal="pressed" from="CanvasLayer/Pause/Resume" to="." method="_unpause"]
+[connection signal="pressed" from="CanvasLayer/Pause/Restart" to="." method="_reset"]
+[connection signal="pressed" from="CanvasLayer/Pause/Exit" to="." method="_menu"]

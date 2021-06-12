@@ -17,8 +17,13 @@ func _grounded() -> bool:
 	return false
 func _physics_process(delta) -> void:
 	if !paused and onRobot:
-		if _grounded():
-			if Input.is_action_pressed(_get_local_right()):
+		if Input.is_action_pressed(_get_local_right()):
+			$Sprite.play("forward")
+			if _grounded():
 				get_parent().apply_central_impulse(Vector2.DOWN.rotated(rotation)*power)
-			if Input.is_action_pressed(_get_local_left()):
+		elif Input.is_action_pressed(_get_local_left()):
+			$Sprite.play("forward", true)
+			if _grounded():
 				get_parent().apply_central_impulse(Vector2.DOWN.rotated(-rotation)*power)
+		else:
+			$Sprite.playing = false
