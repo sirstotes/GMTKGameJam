@@ -2,10 +2,17 @@ extends CollisionShape2D
 class_name Part
 export var direction : int = 0
 export var onRobot : bool = true
-var mass = 1
+export var mass : float = 1
 
+var paused = true
+
+func _ready():
+	rotation = -(PI/2)*direction
 func _set_direction(dir : int):
-	direction = dir%4
+	var d = dir
+	while d < 0:
+		d = d + 4
+	direction = d%4
 	rotation = -(PI/2)*direction
 func _is_direction_pressed() -> bool:
 	if direction == 0:
@@ -53,3 +60,5 @@ func _get_local_up() -> String:
 		return "left"
 	else:
 		return "down"
+func _set_paused(p : bool) -> void:
+	paused = p

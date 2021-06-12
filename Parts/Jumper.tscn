@@ -1,35 +1,44 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Roller.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Jumper.gd" type="Script" id=1]
 [ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://RobotGame.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 16, 32, 12, 16 )
+region = Rect2( 16, 64, 11, 16 )
 
-[node name="Roller" type="CollisionShape2D"]
-shape = SubResource( 3 )
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 64, 19, 16 )
+
+[node name="Jumper" type="CollisionShape2D"]
+shape = SubResource( 1 )
 script = ExtResource( 1 )
 mass = 0.25
-power = 5.0
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 6, 0 )
+[node name="Small" type="Sprite" parent="."]
 rotation = 3.14159
 scale = Vector2( 2, 2 )
 texture = SubResource( 2 )
 
+[node name="Big" type="Sprite" parent="."]
+visible = false
+position = Vector2( -6, 0 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+texture = SubResource( 3 )
+
 [node name="Attachments" type="Node2D" parent="."]
 
 [node name="Attachment" parent="Attachments" instance=ExtResource( 2 )]
-position = Vector2( 18, 0 )
+position = Vector2( 11, 0 )
 
 [node name="RayCastStart1" type="Node2D" parent="."]
-position = Vector2( -4, -16 )
+position = Vector2( -11, -16 )
 rotation = 1.5708
 
 [node name="RayCastEnd1" type="Node2D" parent="."]
@@ -37,17 +46,9 @@ position = Vector2( -13, -16 )
 rotation = 1.5708
 
 [node name="RayCastStart2" type="Node2D" parent="."]
-position = Vector2( -7, 0 )
+position = Vector2( -11, 16 )
 rotation = 1.5708
 
 [node name="RayCastEnd2" type="Node2D" parent="."]
-position = Vector2( -13, 0 )
-rotation = 1.5708
-
-[node name="RayCastStart3" type="Node2D" parent="."]
-position = Vector2( -4, 16 )
-rotation = 1.5708
-
-[node name="RayCastEnd3" type="Node2D" parent="."]
 position = Vector2( -13, 16 )
 rotation = 1.5708

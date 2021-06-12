@@ -16,8 +16,10 @@ func _process(delta) -> void:
 		position = get_viewport().get_mouse_position() + mouseOffset
 		if Input.is_action_just_pressed("rotate_left"):
 			get_child(0)._set_direction(get_child(0).direction+1)
+			emit_signal("drop")
 		if Input.is_action_just_pressed("rotate_right"):
 			get_child(0)._set_direction(get_child(0).direction-1)
+			emit_signal("drop")
 func _on_drag() -> void:
 	dragging = true
 	for attachment in get_child(0).get_node("Attachments").get_children():

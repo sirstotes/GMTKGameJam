@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Part.gd" type="Script" id=1]
 [ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://RobotGame.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
-[node name="Block" type="CollisionShape2D"]
-shape = SubResource( 1 )
-script = ExtResource( 1 )
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 16, 16, 16 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.470588, 0.470588, 0.470588, 1 )
-polygon = PoolVector2Array( -16, -8, -8, -16, 8, -16, 16, -8, 16, 8, 8, 16, -8, 16, -16, 8 )
+[node name="Block" type="CollisionShape2D"]
+shape = SubResource( 2 )
+script = ExtResource( 1 )
+mass = 0.5
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = SubResource( 3 )
 
 [node name="Attachments" type="Node2D" parent="."]
 

@@ -10,8 +10,7 @@ var time_deactivated : float = 0
 var charged : float = true
 
 func _physics_process(delta) -> void:
-	if onRobot:
-		rotation = -(PI/2)*direction
+	if !paused and onRobot:
 		if Input.is_action_pressed(_get_local_up()):
 			time_activated += delta
 			time_deactivated = 0

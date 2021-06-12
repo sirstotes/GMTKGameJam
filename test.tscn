@@ -1,88 +1,306 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Scripts/Robot.gd" type="Script" id=1]
-[ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Parts/Robot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Parts/Gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Parts/Block.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Part.gd" type="Script" id=4]
+[ext_resource path="res://RobotGame.png" type="Texture" id=4]
 [ext_resource path="res://Parts/Thruster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Parts/Roller.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Parts/Draggable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/CameraFollow.gd" type="Script" id=9]
+[ext_resource path="res://Parts/Jumper.tscn" type="PackedScene" id=10]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 512, 16 )
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 8, 8, 0, 8, 8, 0 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 8, 16, 0, 16, 16, 0, 16, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 24, 0, 24, 16, 0, 16, 0, 8 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "RobotGame.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 88, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "RobotGame.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 88, 8, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "RobotGame.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 96, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 12 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+5/name = "RobotGame.png 5"
+5/texture = ExtResource( 4 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 112, 0, 8, 8 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 7 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "RobotGame.png 6"
+6/texture = ExtResource( 4 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 120, 0, 8, 8 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 8 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "RobotGame.png 7"
+7/texture = ExtResource( 4 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 120, 8, 8, 8 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 9 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "RobotGame.png 8"
+8/texture = ExtResource( 4 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 112, 8, 8, 8 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 10 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "RobotGame.png 9"
+9/texture = ExtResource( 4 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 64, 0, 24, 16 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 11 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+
+[sub_resource type="PhysicsMaterial" id=13]
+friction = 0.0
+bounce = 0.2
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 8 )
 
-[node name="StaticBody2D2" type="RigidBody2D" parent="."]
-position = Vector2( 8, 576 )
-rotation = 1.57079
-collision_layer = 3
-mode = 1
+[node name="TileMap" type="TileMap" parent="." groups=[
+"Ground",
+]]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 8, 8 )
+cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
+collision_layer = 1024
+format = 1
+tile_data = PoolIntArray( 65532, 8, 0, 65533, 8, 0, 65534, 8, 0, 65535, -1610612731, 0, 131068, 8, 0, 131069, 8, 0, 131070, 8, 0, 131071, -1610612731, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, -1610612731, 0, 262140, 8, 0, 262141, 8, 0, 262142, 8, 0, 262143, -1610612731, 0, 327676, 8, 0, 327677, 8, 0, 327678, 8, 0, 327679, -1610612731, 0, 393212, 8, 0, 393213, 8, 0, 393214, 8, 0, 393215, -1610612731, 0, 458748, 8, 0, 458749, 8, 0, 458750, 8, 0, 458751, -1610612731, 0, 524284, 8, 0, 524285, 8, 0, 524286, 8, 0, 524287, -1610612731, 0, 458797, 2, 0, 458799, 5, 0, 458800, 5, 0, 458801, 5, 0, 458802, 6, 0, 589820, 8, 0, 589821, 8, 0, 589822, 8, 0, 589823, -1610612731, 0, 524332, 0, 0, 524335, 8, 0, 524336, 8, 0, 524337, 8, 0, 524338, -1610612731, 0, 655356, 8, 0, 655357, 8, 0, 655358, 8, 0, 655359, -1610612731, 0, 589866, 2, 0, 589868, 1, 0, 589869, 8, 0, 589870, 8, 0, 589871, 8, 0, 589872, 8, 0, 589873, 8, 0, 589874, -1610612731, 0, 720892, 8, 0, 720893, 8, 0, 720894, 8, 0, 720895, -1610612731, 0, 655399, 9, 0, 655404, 8, 0, 655405, 8, 0, 655406, 8, 0, 655407, 8, 0, 655408, 8, 0, 655409, 8, 0, 655410, -1610612731, 0, 786428, 8, 0, 786429, 8, 0, 786430, 8, 0, 786431, -1610612731, 0, 720932, 9, 0, 720938, 8, 0, 720939, 8, 0, 720940, 8, 0, 720941, 8, 0, 720942, 8, 0, 720943, 8, 0, 720944, 8, 0, 720945, 8, 0, 720946, -1610612731, 0, 851964, 8, 0, 851965, 8, 0, 851966, 8, 0, 851967, -1610612731, 0, 786466, 2, 0, 786471, 8, 0, 786472, 8, 0, 786473, 8, 0, 786474, 8, 0, 786475, 8, 0, 786476, 8, 0, 786477, 8, 0, 786478, 8, 0, 786479, 8, 0, 786480, 8, 0, 786481, 8, 0, 786482, 7, 0, 786483, 5, 0, 786484, 5, 0, 786485, 5, 0, 786486, 5, 0, 786487, 5, 0, 786488, 5, 0, 786489, 5, 0, 786490, 5, 0, 786491, 5, 0, 786492, 5, 0, 786493, 5, 0, 786494, 5, 0, 786495, 5, 0, 786496, 5, 0, 786497, 5, 0, 786498, 5, 0, 786499, 5, 0, 917500, 8, 0, 917501, 8, 0, 917502, 8, 0, 917503, -1610612731, 0, 852000, 2, 0, 852004, 8, 0, 852005, 8, 0, 852006, 8, 0, 852007, 8, 0, 852008, 8, 0, 852009, 8, 0, 852010, 8, 0, 852011, 8, 0, 852012, 8, 0, 852013, 8, 0, 852014, 8, 0, 852015, 8, 0, 852016, 8, 0, 852017, 8, 0, 852018, 8, 0, 852019, 8, 0, 852020, 8, 0, 852021, 8, 0, 852022, 8, 0, 852023, 8, 0, 852024, 8, 0, 852025, 8, 0, 852026, 8, 0, 852027, 8, 0, 852028, 8, 0, 852029, 8, 0, 852030, 8, 0, 852031, 8, 0, 852032, 8, 0, 852033, 8, 0, 852034, 8, 0, 852035, 8, 0, 983036, 8, 0, 983037, 8, 0, 983038, 8, 0, 983039, 7, 0, 917504, 5, 0, 917505, 5, 0, 917506, 5, 0, 917507, 5, 0, 917508, 5, 0, 917509, 5, 0, 917510, 5, 0, 917511, 5, 0, 917512, 5, 0, 917513, 5, 0, 917514, 5, 0, 917515, 5, 0, 917516, 5, 0, 917517, 5, 0, 917518, 5, 0, 917519, 5, 0, 917520, 5, 0, 917521, 5, 0, 917522, 5, 0, 917523, 5, 0, 917524, 5, 0, 917525, 5, 0, 917526, 5, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0, 917530, 5, 0, 917531, 5, 0, 917532, 5, 0, 917533, 5, 0, 917534, 5, 0, 917535, 5, 0, 917538, 8, 0, 917539, 8, 0, 917540, 8, 0, 917541, 8, 0, 917542, 8, 0, 917543, 8, 0, 917544, 8, 0, 917545, 8, 0, 917546, 8, 0, 917547, 8, 0, 917548, 8, 0, 917549, 8, 0, 917550, 8, 0, 917551, 8, 0, 917552, 8, 0, 917553, 8, 0, 917554, 8, 0, 917555, 8, 0, 917556, 8, 0, 917557, 8, 0, 917558, 8, 0, 917559, 8, 0, 917560, 8, 0, 917561, 8, 0, 917562, 8, 0, 917563, 8, 0, 917564, 8, 0, 917565, 8, 0, 917566, 8, 0, 917567, 8, 0, 917568, 8, 0, 917569, 8, 0, 917570, 8, 0, 917571, 8, 0, 1048572, 8, 0, 1048573, 8, 0, 1048574, 8, 0, 1048575, 8, 0, 983040, 8, 0, 983041, 8, 0, 983042, 8, 0, 983043, 8, 0, 983044, 8, 0, 983045, 8, 0, 983046, 8, 0, 983047, 8, 0, 983048, 8, 0, 983049, 8, 0, 983050, 8, 0, 983051, 8, 0, 983052, 8, 0, 983053, 8, 0, 983054, 8, 0, 983055, 8, 0, 983056, 8, 0, 983057, 8, 0, 983058, 8, 0, 983059, 8, 0, 983060, 8, 0, 983061, 8, 0, 983062, 8, 0, 983063, 8, 0, 983064, 8, 0, 983065, 8, 0, 983066, 8, 0, 983067, 8, 0, 983068, 8, 0, 983069, 8, 0, 983070, 8, 0, 983071, 8, 0, 983072, 8, 0, 983073, 8, 0, 983074, 8, 0, 983075, 8, 0, 983076, 8, 0, 983077, 8, 0, 983078, 8, 0, 983079, 8, 0, 983080, 8, 0, 983081, 8, 0, 983082, 8, 0, 983083, 8, 0, 983084, 8, 0, 983085, 8, 0, 983086, 8, 0, 983087, 8, 0, 983088, 8, 0, 983089, 8, 0, 983090, 8, 0, 983091, 8, 0, 983092, 8, 0, 983093, 8, 0, 983094, 8, 0, 983095, 8, 0, 983096, 8, 0, 983097, 8, 0, 983098, 8, 0, 983099, 8, 0, 983100, 8, 0, 983101, 8, 0, 983102, 8, 0, 983103, 8, 0, 983104, 8, 0, 983105, 8, 0, 983106, 8, 0, 983107, 8, 0, 1114108, 8, 0, 1114109, 8, 0, 1114110, 8, 0, 1114111, 8, 0, 1048576, 8, 0, 1048577, 8, 0, 1048578, 8, 0, 1048579, 8, 0, 1048580, 8, 0, 1048581, 8, 0, 1048582, 8, 0, 1048583, 8, 0, 1048584, 8, 0, 1048585, 8, 0, 1048586, 8, 0, 1048587, 8, 0, 1048588, 8, 0, 1048589, 8, 0, 1048590, 8, 0, 1048591, 8, 0, 1048592, 8, 0, 1048593, 8, 0, 1048594, 8, 0, 1048595, 8, 0, 1048596, 8, 0, 1048597, 8, 0, 1048598, 8, 0, 1048599, 8, 0, 1048600, 8, 0, 1048601, 8, 0, 1048602, 8, 0, 1048603, 8, 0, 1048604, 8, 0, 1048605, 8, 0, 1048606, 8, 0, 1048607, 8, 0, 1048608, 8, 0, 1048609, 8, 0, 1048610, 8, 0, 1048611, 8, 0, 1048612, 8, 0, 1048613, 8, 0, 1048614, 8, 0, 1048615, 8, 0, 1048616, 8, 0, 1048617, 8, 0, 1048618, 8, 0, 1048619, 8, 0, 1048620, 8, 0, 1048621, 8, 0, 1048622, 8, 0, 1048623, 8, 0, 1048624, 8, 0, 1048625, 8, 0, 1048626, 8, 0, 1048627, 8, 0, 1048628, 8, 0, 1048629, 8, 0, 1048630, 8, 0, 1048631, 8, 0, 1048632, 8, 0, 1048633, 8, 0, 1048634, 8, 0, 1048635, 8, 0, 1048636, 8, 0, 1048637, 8, 0, 1048638, 8, 0, 1048639, 8, 0, 1048640, 8, 0, 1048641, 8, 0, 1048642, 8, 0, 1048643, 8, 0, 1179644, 8, 0, 1179645, 8, 0, 1179646, 8, 0, 1179647, 8, 0, 1114112, 8, 0, 1114113, 8, 0, 1114114, 8, 0, 1114115, 8, 0, 1114116, 8, 0, 1114117, 8, 0, 1114118, 8, 0, 1114119, 8, 0, 1114120, 8, 0, 1114121, 8, 0, 1114122, 8, 0, 1114123, 8, 0, 1114124, 8, 0, 1114125, 8, 0, 1114126, 8, 0, 1114127, 8, 0, 1114128, 8, 0, 1114129, 8, 0, 1114130, 8, 0, 1114131, 8, 0, 1114132, 8, 0, 1114133, 8, 0, 1114134, 8, 0, 1114135, 8, 0, 1114136, 8, 0, 1114137, 8, 0, 1114138, 8, 0, 1114139, 8, 0, 1114140, 8, 0, 1114141, 8, 0, 1114142, 8, 0, 1114143, 8, 0, 1114144, 8, 0, 1114145, 8, 0, 1114146, 8, 0, 1114147, 8, 0, 1114148, 8, 0, 1114149, 8, 0, 1114150, 8, 0, 1114151, 8, 0, 1114152, 8, 0, 1114153, 8, 0, 1114154, 8, 0, 1114155, 8, 0, 1114156, 8, 0, 1114157, 8, 0, 1114158, 8, 0, 1114159, 8, 0, 1114160, 8, 0, 1114161, 8, 0, 1114162, 8, 0, 1114163, 8, 0, 1114164, 8, 0, 1114165, 8, 0, 1114166, 8, 0, 1114167, 8, 0, 1114168, 8, 0, 1114169, 8, 0, 1114170, 8, 0, 1114171, 8, 0, 1114172, 8, 0, 1114173, 8, 0, 1114174, 8, 0, 1114175, 8, 0, 1114176, 8, 0, 1114177, 8, 0, 1114178, 8, 0, 1114179, 8, 0 )
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
-polygon = PoolVector2Array( -512, -16, 512, -16, 512, 16, -512, 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource( 2 )
-
-[node name="StaticBody2D" type="RigidBody2D" parent="."]
-position = Vector2( 512, 576 )
-collision_layer = 3
-mode = 1
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -512, -16, 512, -16, 512, 16, -512, 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="Robot" type="RigidBody2D" parent="."]
-position = Vector2( 512, 192 )
-mode = 2
-script = ExtResource( 1 )
-draggableHolderPath = NodePath("../Draggables")
-
-[node name="Controller" type="CollisionShape2D" parent="Robot"]
-shape = SubResource( 1 )
-script = ExtResource( 4 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Robot/Controller"]
-polygon = PoolVector2Array( -16, 16, -16, 0, -8, -8, 8, -8, 16, 0, 16, 16 )
-
-[node name="Attachments" type="Node2D" parent="Robot/Controller"]
-
-[node name="Attachment" parent="Robot/Controller/Attachments" instance=ExtResource( 2 )]
-position = Vector2( 0, 16 )
-side = 3
-
-[node name="Block" parent="Robot" instance=ExtResource( 3 )]
-position = Vector2( 0, 32 )
+[node name="Bullets" type="Node2D" parent="."]
 
 [node name="Draggables" type="Node2D" parent="."]
+pause_mode = 2
+visible = false
 
 [node name="Draggable" parent="Draggables" instance=ExtResource( 7 )]
-position = Vector2( 704, 256 )
+position = Vector2( 320, 128 )
 
 [node name="Block" parent="Draggables/Draggable" instance=ExtResource( 3 )]
 onRobot = false
 
+[node name="Draggable5" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 320, 64 )
+
+[node name="Block" parent="Draggables/Draggable5" instance=ExtResource( 3 )]
+onRobot = false
+
 [node name="Draggable2" parent="Draggables" instance=ExtResource( 7 )]
-position = Vector2( 768, 256 )
+position = Vector2( 384, 128 )
 
 [node name="Roller" parent="Draggables/Draggable2" instance=ExtResource( 6 )]
+direction = 1
+onRobot = false
+
+[node name="Draggable7" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 384, 64 )
+
+[node name="Roller" parent="Draggables/Draggable7" instance=ExtResource( 6 )]
 onRobot = false
 
 [node name="Draggable3" parent="Draggables" instance=ExtResource( 7 )]
-position = Vector2( 832, 256 )
+position = Vector2( 448, 128 )
 
 [node name="Thruster" parent="Draggables/Draggable3" instance=ExtResource( 5 )]
 onRobot = false
 
+[node name="Draggable4" parent="Draggables" instance=ExtResource( 7 )]
+
+[node name="Gun" parent="Draggables/Draggable4" instance=ExtResource( 2 )]
+position = Vector2( 128, 128 )
+
+[node name="Draggable6" parent="Draggables" instance=ExtResource( 7 )]
+position = Vector2( 0, -64 )
+
+[node name="Gun" parent="Draggables/Draggable6" instance=ExtResource( 2 )]
+position = Vector2( 128, 128 )
+
+[node name="Draggable8" parent="Draggables" instance=ExtResource( 7 )]
+
+[node name="Jumper" parent="Draggables/Draggable8" instance=ExtResource( 10 )]
+position = Vector2( 192, 64 )
+
+[node name="Robot" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
+position = Vector2( 256, 64 )
+mode = 0
+physics_material_override = SubResource( 13 )
+angular_damp = 1.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 256, 64 )
+offset = Vector2( 0, 80 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 9 )
+followPath = NodePath("../Robot")
+boundaryLeft = 192.0
+boundaryRight = 832.0
+boundaryTop = 64.0
+boundaryBottom = 64.0
 
 [editable path="Draggables/Draggable"]
 
+[editable path="Draggables/Draggable5"]
+
 [editable path="Draggables/Draggable2"]
+
+[editable path="Draggables/Draggable7"]

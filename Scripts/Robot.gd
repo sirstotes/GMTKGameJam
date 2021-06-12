@@ -12,15 +12,11 @@ const DRAGGABLE = preload("res://Parts/Draggable.tscn")
 func _ready():
 	if draggableHolderPath != "":
 		draggableHolder = get_node(draggableHolderPath)
-#	$Block/Attachments/Attachment2._attach($Controller/Attachments/Attachment)
-#	$Thruster/Attachments/Attachment1._attach($Block/Attachments/Attachment4)
-#	$Thruster2/Attachments/Attachment1._attach($Block/Attachments/Attachment1)
-#	$Thruster3/Attachments/Attachment1._attach($Block/Attachments/Attachment3)
 func _process(delta) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		if editing:
 			editing = false
-			sleeping = false
+			set_sleeping(false)
 			emit_signal("finish_editing")
 			$Controller/Attachments.hide()
 			for attachment in $Controller/Attachments.get_children():
@@ -32,19 +28,27 @@ func _process(delta) -> void:
 					_recursive_get_parts(attachment.other._get_siblings())
 		else:
 			editing = true
-			sleeping = true
+			set_sleeping(true)
 			emit_signal("begin_editing")
+			
 			for child in get_children():
 				print(child.name)
 				if child is Part:
 					child.get_node("Attachments").show()
 					if child.name != "Controller":
 						var newDraggable = DRAGGABLE.instance()
-						newDraggable.global_position = child.global_position
+						newDraggable.position = Vector2(256, 64)+child.position
+						child.position = Vector2(0, 0)
 						draggableHolder.add_child(newDraggable)
 						remove_child(child)
 						newDraggable.add_child(child)
 						child.onRobot = false
+func _integrate_forces(state):
+	if editing:
+		set_sleeping(true)
+		state.transform.origin = Vector2(256, 64)
+		var xform = state.get_transform().rotated(-rotation)
+		state.set_transform(xform)
 func _recursive_get_parts(siblings) -> void:
 	if len(siblings) > 0:
 		for s in siblings:
@@ -59,3 +63,6 @@ func _add_part(p : Part) -> void:
 	p.get_node("Attachments").hide()
 	p.get_parent().remove_child(p)
 	add_child(p)
+	p.paused = false
+	if p is Gun:
+		p.bulletHolder = get_parent().get_node("Bullets")
