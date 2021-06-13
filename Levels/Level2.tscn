@@ -47,54 +47,8 @@ limit_right = 1104
 limit_bottom = 352
 
 [node name="Goal" parent="." index="9"]
-position = Vector2( 960, 172 )
-
-[node name="AnimatedSprite" parent="Goal" index="2"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite" index="0"]
-frame = 3
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2" index="0"]
-frame = 3
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 2
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 3
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 3
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 2
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 3
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 2
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 1
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 3
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 2
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 2
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 1
+position = Vector2( 960, 176 )
 
 [editable path="Builder2"]
+
+[editable path="Goal"]

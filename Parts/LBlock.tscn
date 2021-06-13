@@ -9,7 +9,7 @@ extents = Vector2( 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 16, 16 )
+region = Rect2( 0, 64, 16, 15 )
 
 [node name="Block" type="CollisionShape2D"]
 shape = SubResource( 1 )
@@ -22,17 +22,9 @@ texture = SubResource( 2 )
 
 [node name="Attachments" type="Node2D" parent="."]
 
-[node name="Attachment2" parent="Attachments" instance=ExtResource( 2 )]
+[node name="Attachment" parent="Attachments" instance=ExtResource( 2 )]
 position = Vector2( 16, 0 )
-
-[node name="Attachment4" parent="Attachments" instance=ExtResource( 2 )]
-position = Vector2( 0, 16 )
-side = 3
 
 [node name="Attachment1" parent="Attachments" instance=ExtResource( 2 )]
 position = Vector2( 0, -16 )
 side = 1
-
-[node name="Attachment3" parent="Attachments" instance=ExtResource( 2 )]
-position = Vector2( -16, 0 )
-side = 2

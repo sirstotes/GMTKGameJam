@@ -135,5 +135,7 @@ pause={
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
+quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.380392, 0.27451, 0.529412, 1 )
 environment/default_environment="res://default_env.tres"

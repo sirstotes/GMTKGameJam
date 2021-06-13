@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/builder.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Builder.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Sprites/Button-Dark.tres" type="StyleBox" id=4]
+[ext_resource path="res://Sprites/Button-Light.tres" type="StyleBox" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 168, 144 )
@@ -32,6 +34,9 @@ margin_left = -64.0
 margin_top = -72.0
 margin_right = 64.0
 margin_bottom = -40.0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 text = "Begin Editing"
 __meta__ = {

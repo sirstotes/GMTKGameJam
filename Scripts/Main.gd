@@ -5,13 +5,14 @@ var title : String = "res://Levels/Title.tscn"
 
 func _ready():
 	_begin_editing($Builder)
+	$Goal.connect("player_entered", self, "_on_goal_entered")
 func _process(delta):
 	$Goal._set_active($Enemies.get_child_count() == 0)
 func _begin_editing(builder : Node2D):
 	#$Draggables.show()
 	$Camera2D.follow = builder.get_node("Camera")
 	$CanvasLayer/UI.hide()
-	$CanvasLayer/Editor/Button.show()
+	$CanvasLayer/Editor.show()
 	for draggable in get_tree().get_nodes_in_group("Draggable"):
 		draggable.paused = true
 	for part in get_tree().get_nodes_in_group("Part"):
@@ -25,7 +26,7 @@ func _finish_editing():
 	#$Draggables.hide()
 	$Camera2D.follow = $Robot
 	$CanvasLayer/UI.show()
-	$CanvasLayer/Editor/Button.hide()
+	$CanvasLayer/Editor.hide()
 	for draggable in get_tree().get_nodes_in_group("Draggable"):
 		draggable.paused = false
 	for part in get_tree().get_nodes_in_group("Part"):

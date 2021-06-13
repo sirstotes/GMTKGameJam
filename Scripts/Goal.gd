@@ -10,5 +10,5 @@ func _set_active(a : bool):
 
 func _on_body_entered(body : Node) -> void:
 	if body.is_in_group("Robot"):
-		if active and body.health > 0:
+		if active:
 			emit_signal("player_entered")

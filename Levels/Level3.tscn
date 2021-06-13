@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Parts/Block.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Parts/Draggable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spawn/BasicEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Parts/Roller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/small.tres" type="DynamicFont" id=7]
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 nextLevel = "res://Levels/Level4.tscn"
@@ -46,52 +47,19 @@ limit_right = 1904
 limit_bottom = 352
 
 [node name="Goal" parent="." index="8"]
-position = Vector2( 1776, 172 )
+position = Vector2( 1776, 176 )
 
-[node name="AnimatedSprite" parent="Goal" index="2"]
-frame = 2
+[node name="Label2" type="Label" parent="CanvasLayer/UI" index="2"]
+margin_left = 128.0
+margin_top = 16.0
+margin_right = 384.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 7 )
+text = "PRESS E TO SHOOT"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite" index="0"]
-frame = 1
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2" index="0"]
-frame = 1
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 2
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 1
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 1
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 0
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 2
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 1
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 0
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 3
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4" index="0"]
-frame = 1
-
-[node name="AnimatedSprite2" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2" index="0"]
-frame = 0
-
-[node name="AnimatedSprite3" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2" index="0"]
-frame = 0
-
-[node name="AnimatedSprite4" parent="Goal/AnimatedSprite/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3/AnimatedSprite4/AnimatedSprite2/AnimatedSprite2/AnimatedSprite3" index="0"]
-frame = 3
+[editable path="Goal"]

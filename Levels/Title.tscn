@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/divlit.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/small.tres" type="DynamicFont" id=2]
@@ -6,15 +6,14 @@
 [ext_resource path="res://Sprites/paralax-1.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/SceneBase.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/clouds.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Button-Dark.tres" type="StyleBox" id=7]
+[ext_resource path="res://Sprites/Button-Light.tres" type="StyleBox" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 48
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.2, 0.117647, 0.313726, 1 )
 
 [node name="Title" type="Node2D"]
 script = ExtResource( 5 )
@@ -43,7 +42,7 @@ margin_left = -155.5
 margin_top = 32.0
 margin_right = 155.5
 margin_bottom = 68.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "MODULOS"
 align = 1
 uppercase = true
@@ -56,13 +55,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -29.5
+margin_left = -64.0
 margin_top = -57.0
-margin_right = 29.5
+margin_right = 64.0
 margin_bottom = -32.0
-custom_styles/normal = SubResource( 1 )
+grow_horizontal = 2
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 2 )
-text = "START"
+text = "START GAME"
 __meta__ = {
 "_edit_use_anchors_": false
 }
