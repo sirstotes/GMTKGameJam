@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/RobotGame.png" type="Texture" id=3]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 16, 32 )
@@ -42,7 +41,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,9 +1,16 @@
-extends Node2D
+extends BaseScene
+
+export var nextLevel : String = "res://Levels/Title.tscn"
+var title : String = "res://Levels/Title.tscn"
 
 func _ready():
 	_begin_editing($Builder)
+func _process(delta):
+	$Goal._set_active($Enemies.get_child_count() == 0)
 func _begin_editing(builder : Node2D):
 	#$Draggables.show()
+	$Camera2D.follow = builder.get_node("Camera")
+	$CanvasLayer/UI.hide()
 	$CanvasLayer/Editor/Button.show()
 	for draggable in get_tree().get_nodes_in_group("Draggable"):
 		draggable.paused = true
@@ -16,6 +23,8 @@ func _begin_editing(builder : Node2D):
 	$Robot._begin_editing(builder.get_node("RobotSpace").global_position)
 func _finish_editing():
 	#$Draggables.hide()
+	$Camera2D.follow = $Robot
+	$CanvasLayer/UI.show()
 	$CanvasLayer/Editor/Button.hide()
 	for draggable in get_tree().get_nodes_in_group("Draggable"):
 		draggable.paused = false
@@ -35,13 +44,14 @@ func _unpause():
 	$CanvasLayer/Pause.hide()
 func _reset():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	change_scene(filename)
 func _next_level():
-	pass
+	get_tree().paused = false
+	change_scene_with_transition(nextLevel, "SlideFromBottom", "SlideToTop")
 func _menu():
-	pass
-func _on_goal_entered(body):
-	if body.is_in_group("Robot"):
-		_next_level()
+	get_tree().paused = false
+	change_scene(title)
+func _on_goal_entered():
+	_next_level()
 func _update_player_ui():
 	$CanvasLayer/UI/ColorRect.rect_scale.x = float($Robot.health)/float($Robot.maxHealth)

@@ -5,8 +5,8 @@ signal begin_editing()
 signal finish_editing()
 
 export var draggableHolderPath : NodePath
-export var maxHealth = 5
-export var health = 5
+export var maxHealth = 3
+export var health = 3
 
 var draggableHolder : Node2D
 

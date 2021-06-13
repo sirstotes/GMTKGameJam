@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Attachment.gd"
 }, {
+"base": "Node2D",
+"class": "BaseScene",
+"language": "GDScript",
+"path": "res://Scripts/SceneBase.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -56,6 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Attachment": "",
+"BaseScene": "",
 "Bullet": "",
 "Enemy": "",
 "Gun": "",
@@ -69,6 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GTMKGameJam"
+run/main_scene="res://Levels/Master.tscn"
 config/icon="res://icon.png"
 
 [display]

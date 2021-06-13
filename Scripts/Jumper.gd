@@ -16,12 +16,12 @@ func _grounded() -> bool:
 func _physics_process(delta) -> void:
 	if !paused and onRobot:
 		if Input.is_action_pressed(_get_local_up()):
-			shape.extents = shape.extents.linear_interpolate(Vector2(17, 16), delta*10)
+			shape.extents = Vector2(17, 16)
 			$Small.hide()
 			$Big.show()
 			if _grounded():
 				get_parent().apply_central_impulse(Vector2.RIGHT.rotated(rotation)*power)
 		else:
-			shape.extents = shape.extents.linear_interpolate(Vector2(11, 16), delta*10)
+			shape.extents = Vector2(11, 16)
 			$Small.show()
 			$Big.hide()

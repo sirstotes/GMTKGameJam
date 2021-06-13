@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 168, 144 )
 
-[node name="Builder" type="Area2D"]
+[node name="Builder" type="Area2D" groups=[
+"Builder",
+]]
 position = Vector2( 256, 144 )
 script = ExtResource( 2 )
 
@@ -35,5 +37,8 @@ text = "Begin Editing"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camera" type="Node2D" parent="."]
+position = Vector2( 0, 64 )
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
