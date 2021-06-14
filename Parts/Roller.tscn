@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Roller.gd" type="Script" id=1]
 [ext_resource path="res://Parts/Attachment.tscn" type="PackedScene" id=2]
@@ -27,6 +27,9 @@ animations = [ {
 "speed": 16.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5, 18 )
+
 [node name="Roller" type="CollisionShape2D"]
 shape = SubResource( 1 )
 script = ExtResource( 1 )
@@ -46,26 +49,8 @@ frame = 1
 [node name="Attachment" parent="Attachments" instance=ExtResource( 2 )]
 position = Vector2( 18, 0 )
 
-[node name="RayCastStart1" type="Node2D" parent="."]
-position = Vector2( -4, -16 )
-rotation = 1.5708
+[node name="GroundCheck" type="Area2D" parent="."]
+position = Vector2( -5, 0 )
 
-[node name="RayCastEnd1" type="Node2D" parent="."]
-position = Vector2( -13, -16 )
-rotation = 1.5708
-
-[node name="RayCastStart2" type="Node2D" parent="."]
-position = Vector2( -7, 0 )
-rotation = 1.5708
-
-[node name="RayCastEnd2" type="Node2D" parent="."]
-position = Vector2( -13, 0 )
-rotation = 1.5708
-
-[node name="RayCastStart3" type="Node2D" parent="."]
-position = Vector2( -4, 16 )
-rotation = 1.5708
-
-[node name="RayCastEnd3" type="Node2D" parent="."]
-position = Vector2( -13, 16 )
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck"]
+shape = SubResource( 6 )

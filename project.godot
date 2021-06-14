@@ -78,6 +78,10 @@ config/name="GTMKGameJam"
 run/main_scene="res://Levels/Master.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalVars="*res://Scripts/GlobalVars.gd"
+
 [display]
 
 window/size/width=512

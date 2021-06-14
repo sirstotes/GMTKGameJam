@@ -1,27 +1,22 @@
 extends Part
 class_name Jumper
 
-export var power : float = 200
+export var power : float = 50
 
 func _grounded() -> bool:
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray($RayCastStart1.global_position, $RayCastEnd1.global_position)
-	if result:
-		return result.collider.is_in_group("Ground")
-	result = space_state.intersect_ray($RayCastStart2.global_position, $RayCastEnd2.global_position)
-	if result:
-		return result.collider.is_in_group("Ground")
+	for body in $GroundCheck.get_overlapping_bodies():
+		if body.is_in_group("Ground"):
+			return true
+	return false
 	return false
 
 func _physics_process(delta) -> void:
 	if !paused and onRobot:
 		if Input.is_action_pressed(_get_local_up()):
-			shape.extents = Vector2(17, 16)
 			$Small.hide()
 			$Big.show()
 			if _grounded():
-				get_parent().apply_central_impulse(Vector2.RIGHT.rotated(rotation)*power)
+				get_parent().apply_central_impulse(Vector2.RIGHT.rotated(global_rotation)*power)
 		else:
-			shape.extents = Vector2(11, 16)
 			$Small.show()
 			$Big.hide()

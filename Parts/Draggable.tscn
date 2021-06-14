@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Draggable.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
 
 [node name="Draggable" type="Area2D" groups=[
 "Draggable",
 ]]
 script = ExtResource( 2 )
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Area"]
+visible = false
+z_index = -1
+color = Color( 0.968627, 0.905882, 0.776471, 1 )
+polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
